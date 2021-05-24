@@ -14,7 +14,8 @@ import tc.oc.pgm.lib.net.kyori.adventure.text.format.NamedTextColor;
 
 public class ShutdownCountdown extends MatchCountdown {
 
-  protected static final Sound COUNT_SOUND = Sound.sound(key("note.pling"), Sound.Source.MASTER, 1f, 1.19f);
+  protected static final Sound COUNT_SOUND =
+      Sound.sound(key("note.pling"), Sound.Source.MASTER, 1f, 1.19f);
 
   public ShutdownCountdown(Match match) {
     super(match);
