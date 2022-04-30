@@ -39,5 +39,5 @@ public interface TournamentTeamManager {
 
   String formattedName(TournamentTeam tournamentTeam);
 
-  Collection<? extends TournamentTeam> teams();
+  Collection<TournamentTeam> teams();
 }

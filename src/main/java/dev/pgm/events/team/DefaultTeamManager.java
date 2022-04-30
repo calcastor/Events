@@ -99,7 +99,7 @@ public class DefaultTeamManager implements TournamentTeamManager {
   }
 
   @Override
-  public Collection<? extends TournamentTeam> teams() {
+  public Collection<TournamentTeam> teams() {
     return teamSetup.teams();
   }
 }

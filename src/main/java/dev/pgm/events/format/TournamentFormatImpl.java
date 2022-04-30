@@ -15,12 +15,10 @@ import java.util.List;
 import java.util.Optional;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import tc.oc.pgm.api.PGM;
 import tc.oc.pgm.api.match.Match;
-import tc.oc.pgm.util.bukkit.Events;
 
 public class TournamentFormatImpl implements TournamentFormat {
 
@@ -86,13 +84,26 @@ public class TournamentFormatImpl implements TournamentFormat {
 
     // todo: Check phase of previous round?
     Optional<TournamentTeam> winner = roundHolder.calculateWinner(teamManager);
+    Optional<TournamentTeam> loser =
+        teamManager.teams().stream()
+            .filter(t -> winner.isPresent() && !t.equals(winner.get()))
+            .findFirst();
+
+    //    Events.callEvent(
+    //        new TournamentRoundFinishedEvent(match, this, winner, loser), EventPriority.NORMAL);
+
     if (winner.isPresent() || !hasNextRound()) {
       unregisterAll();
       // there's a winner, return and announce them
       state = TournamentState.FINISHED;
       // if this doesn't call it just call it all normal like
       onEnd(match, winner);
-      Events.callEvent(new TournamentFinishedEvent(this, winner), EventPriority.NORMAL);
+      // this should probably get fixed at some point!!!!
+      if (!match.getMap().getName().contains("Volt"))
+        Tournament.get()
+            .getServer()
+            .getPluginManager()
+            .callEvent(new TournamentFinishedEvent(this, winner, loser));
       return;
     }
 

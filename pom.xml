@@ -7,6 +7,14 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<name>Events</name>
 
+	<distributionManagement>
+		<repository>
+			<id>stratus-private</id>
+			<name>Stratus Private</name>
+			<url>http://repo.stratus.network:8080/repository/private</url>
+		</repository>
+	</distributionManagement>
+
 	<repositories>
 		<repository>
 			<id>ashcon-repo</id>
@@ -23,13 +31,13 @@
 		<dependency>
 			<groupId>tc.oc.pgm</groupId>
 			<artifactId>core</artifactId>
-			<version>0.11-SNAPSHOT</version>
+			<version>0.11-SNAPSHOT-Stratus</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>tc.oc.pgm</groupId>
 			<artifactId>util</artifactId>
-			<version>0.11-SNAPSHOT</version>
+			<version>0.11-SNAPSHOT-Stratus</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

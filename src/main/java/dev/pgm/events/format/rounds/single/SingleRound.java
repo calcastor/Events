@@ -91,12 +91,16 @@ public class SingleRound extends AbstractRound<SingleRoundOptions> {
 
   @EventHandler
   public void matchCycleEvent(MatchLoadEvent event) {
-    // force start 5 minute countdown
+    // good coding YEP
+    Duration cycleTime =
+        event.getMatch().getMap().getName().contains("Volt")
+            ? Duration.ofSeconds(300)
+            : Duration.ofSeconds(90);
     if (settings().startCountdown() != null)
       event
           .getMatch()
           .needModule(StartMatchModule.class)
-          .forceStartCountdown(settings().startCountdown(), Duration.ZERO);
+          .forceStartCountdown(cycleTime, Duration.ZERO);
   }
 
   @Override

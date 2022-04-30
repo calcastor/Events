@@ -14,7 +14,7 @@ import tc.oc.pgm.teams.Team;
 
 public class ColorTeamSetup implements TeamSetup {
 
-  private final Collection<? extends TournamentTeam> currentTeams;
+  private final Collection<TournamentTeam> currentTeams;
   // not active at the moment
   private final Set<TournamentTeam> unassigned;
   private final Map<ChatColor, TournamentTeam> colorTeams = new HashMap<>();
@@ -22,14 +22,14 @@ public class ColorTeamSetup implements TeamSetup {
   // active at the moment
   private final Map<TournamentTeam, Team> assigned = new HashMap<>();
 
-  public ColorTeamSetup(Collection<? extends TournamentTeam> tournamentTeams) {
+  public ColorTeamSetup(Collection<TournamentTeam> tournamentTeams) {
     unassigned = new HashSet<>();
     unassigned.addAll(tournamentTeams);
     this.currentTeams = tournamentTeams;
   }
 
   @Override
-  public Collection<? extends TournamentTeam> teams() {
+  public Collection<TournamentTeam> teams() {
     return currentTeams;
   }
 

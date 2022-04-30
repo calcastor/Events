@@ -11,5 +11,5 @@ public interface TeamSetup {
 
   ChatColor colour(TournamentTeam tournamentTeam);
 
-  Collection<? extends TournamentTeam> teams();
+  Collection<TournamentTeam> teams();
 }

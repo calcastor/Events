@@ -15,6 +15,7 @@ import dev.pgm.events.ready.ReadyParties;
 import dev.pgm.events.ready.ReadySystem;
 import dev.pgm.events.team.ConfigTeamParser;
 import dev.pgm.events.team.DefaultTeamManager;
+import dev.pgm.events.team.TeamRegistry;
 import dev.pgm.events.team.TournamentTeamManager;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,6 +33,7 @@ public class Tournament extends JavaPlugin {
 
   private TournamentTeamManager teamManager;
   private TournamentManager tournamentManager;
+  private TeamRegistry teamRegistry;
 
   private static Tournament plugin;
 
@@ -42,6 +44,7 @@ public class Tournament extends JavaPlugin {
 
     teamManager = DefaultTeamManager.manager();
     tournamentManager = new TournamentManager();
+    teamRegistry = new TeamRegistry();
     ConfigTeamParser.getInstance(); // load teams now
 
     ReadyManager readyManager = new ReadyManagerImpl(new ReadySystem(), new ReadyParties());
@@ -76,6 +79,10 @@ public class Tournament extends JavaPlugin {
 
   public TournamentManager getTournamentManager() {
     return tournamentManager;
+  }
+
+  public TeamRegistry getTeamRegistry() {
+    return teamRegistry;
   }
 
   public static Tournament get() {
