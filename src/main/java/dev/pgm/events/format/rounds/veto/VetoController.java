@@ -36,11 +36,13 @@ public class VetoController {
   }
 
   public boolean hasMoreVetoing() {
-    if (options.size() == 1) // only one map left
-    return false;
+    // only one map left
+    if (options.size() == 1) return false;
 
-    for (int i = vetoIndex; i < settings.vetoList().size(); i++)
-      if (settings.vetoList().get(i).team > 0) return true; // teams still get to vote
+    for (int i = vetoIndex; i < settings.vetoList().size(); i++) {
+      // teams still get to vote
+      if (settings.vetoList().get(i).team > 0) return true;
+    }
 
     return true;
   }
@@ -68,8 +70,8 @@ public class VetoController {
   }
 
   public VetoHistory veto(@Nullable TournamentTeam team, int choice) {
-    if (!hasMoreVetoing()) // maybe throw an exception?
-    return null;
+    // maybe throw an exception?
+    if (!hasMoreVetoing()) return null;
 
     VetoSettings.Veto veto = settings.vetoList().get(vetoIndex);
     VetoOption vetoOption = options.remove(choice);

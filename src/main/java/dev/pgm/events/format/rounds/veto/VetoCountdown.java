@@ -34,9 +34,9 @@ public class VetoCountdown extends MatchCountdown {
     long secondsLeft = remaining.getSeconds();
     long origSeconds = total.getSeconds();
 
+    // announce it
     if ((secondsLeft <= 10 && secondsLeft % 5 == 0)
-        || (secondsLeft % 30 == 0 && origSeconds - secondsLeft > 20)) // announce it
-    announceRemaining();
+        || (secondsLeft % 30 == 0 && origSeconds - secondsLeft > 20)) announceRemaining();
   }
 
   @Override

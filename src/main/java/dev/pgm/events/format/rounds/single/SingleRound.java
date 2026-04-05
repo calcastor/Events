@@ -55,8 +55,9 @@ public class SingleRound extends AbstractRound<SingleRoundOptions> {
   public void start(Match match) {
     this.roundPhase = RoundPhase.WAITING;
     // cycle to the map, start in 10 seconds
-    if (settings().cycleCountdown() != null)
-      match.getModule(CycleMatchModule.class).startCountdown(settings().cycleCountdown());
+    var cmm = match.getModule(CycleMatchModule.class);
+    if (cmm != null && settings().cycleCountdown() != null)
+      cmm.startCountdown(settings().cycleCountdown());
   }
 
   @Override

@@ -31,7 +31,7 @@ public class MapFormatXMLParser {
     return null;
   }
 
-  public static TournamentFormat parse(Element root) throws JDOMException {
+  public static TournamentFormat parse(Element root) {
     String bestOfArgs = root.getAttributeValue("best-of");
     TournamentFormat format = getTournamentFormat(bestOfArgs);
 

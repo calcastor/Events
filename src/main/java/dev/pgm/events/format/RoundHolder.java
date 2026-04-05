@@ -100,13 +100,5 @@ class RoundHolder {
     rounds.add(currentRound + 1, round);
   }
 
-  private static class ScoreResult {
-    private final Map<TournamentTeam, Integer> scoreMap;
-    private final int scoringRounds;
-
-    public ScoreResult(Map<TournamentTeam, Integer> scoreMap, int scoringRounds) {
-      this.scoreMap = scoreMap;
-      this.scoringRounds = scoringRounds;
-    }
-  }
+  private record ScoreResult(Map<TournamentTeam, Integer> scoreMap, int scoringRounds) {}
 }
