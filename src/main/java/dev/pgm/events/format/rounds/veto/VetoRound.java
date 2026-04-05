@@ -100,7 +100,7 @@ public class VetoRound extends AbstractRound<VetoSettings> {
   private void cycleVeto(Match match) {
     // cycle to next veto
     Optional<TournamentTeam> picking = picking();
-    if (!picking.isPresent()) {
+    if (picking.isEmpty()) {
       tryAutoVeto(match);
       return;
     }
@@ -134,7 +134,7 @@ public class VetoRound extends AbstractRound<VetoSettings> {
 
   public void randomVeto(Match match) {
     Optional<TournamentTeam> picking = picking();
-    if (!picking.isPresent()) {
+    if (picking.isEmpty()) {
       tryAutoVeto(match);
       return;
     }

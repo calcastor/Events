@@ -24,7 +24,7 @@ public class ConfigTeams implements TournamentTeamFetcher {
   private static List<TournamentTeam> parseTournamentTeams(File teamsFolder, File teamsFile) {
     if (!teamsFolder.exists()) teamsFolder.mkdirs();
 
-    List<TournamentTeam> teamList = new ArrayList<TournamentTeam>();
+    List<TournamentTeam> teamList = new ArrayList<>();
     for (File child :
         teamsFolder.listFiles((file) -> file.getName().toLowerCase().endsWith(".yml"))) {
       FileConfiguration config = YamlConfiguration.loadConfiguration(child);
@@ -45,7 +45,7 @@ public class ConfigTeams implements TournamentTeamFetcher {
           System.out.println("Invalid type in teams.yml ("
               + object.getClass().getName()
               + ": "
-              + object.toString()
+              + object
               + ")! Skipping...");
           continue;
         }

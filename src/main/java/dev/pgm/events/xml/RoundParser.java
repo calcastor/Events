@@ -77,7 +77,7 @@ public class RoundParser {
 
     private static List<VetoSettings.Veto> constructVetoList(Element element, int numOptions) {
       ArrayList<VetoSettings.Veto> vetos = new ArrayList<VetoSettings.Veto>();
-      if (element.getChildren().size() == 0) {
+      if (element.getChildren().isEmpty()) {
         int until = Integer.parseInt(element.getAttributeValue("ban-until", "1"));
         int startingTeam = Integer.parseInt(element.getAttributeValue("starting-team", "2"));
         int numTeams = Integer.parseInt(element.getAttributeValue("teams", "2"));

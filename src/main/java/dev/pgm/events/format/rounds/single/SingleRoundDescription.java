@@ -41,7 +41,7 @@ public class SingleRoundDescription implements RoundDescription {
 
   private String winnersString() {
     Collection<? extends TournamentTeam> teams = singleRound.scores().keySet();
-    if (teams.size() == 0) {
+    if (teams.isEmpty()) {
       // draw
       return drawString();
     }

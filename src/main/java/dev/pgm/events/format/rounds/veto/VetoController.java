@@ -122,7 +122,7 @@ public class VetoController {
       if (round instanceof VetoRound) ((VetoRound) round).setSelectingTeam(selectingTeam);
       else if (round instanceof FormatRound) ((FormatRound) round).setSelectingTeam(selectingTeam);
 
-      toPlay.add(0, round);
+      toPlay.addFirst(round);
     }
   }
 

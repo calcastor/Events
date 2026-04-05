@@ -8,7 +8,6 @@ import dev.pgm.events.team.TournamentTeam;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 import tc.oc.pgm.api.match.Match;
 
 public class ReplayRound extends AbstractRound<ReplaySettings> {
@@ -34,12 +33,12 @@ public class ReplayRound extends AbstractRound<ReplaySettings> {
         .filter(Optional::isPresent)
         .map(Optional::get)
         .filter(this::tiedRound)
-        .collect(Collectors.toList());
+        .toList();
 
     if (rounds.size() == 1) {
       // 1 round has been tied, therefore play it
       isReplaying = true;
-      TournamentRound toReplay = rounds.get(0);
+      TournamentRound toReplay = rounds.getFirst();
       tournament().addRoundAfterCurrent(toReplay.settings(), settings().futureID());
     }
 

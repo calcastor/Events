@@ -33,8 +33,12 @@ public class TwoTeamFormattedScore implements FormattedScore {
   }
 
   private String addPadding(String target, String otherString) {
-    if (target.length() < otherString.length())
-      for (int i = 0; i < otherString.length() - target.length(); i++) target = " " + target;
+    if (target.length() < otherString.length()) {
+      StringBuilder targetBuilder = new StringBuilder(target);
+      for (int i = 0; i < otherString.length() - targetBuilder.length(); i++)
+        targetBuilder.insert(0, " ");
+      target = targetBuilder.toString();
+    }
 
     return target;
   }
@@ -62,7 +66,7 @@ public class TwoTeamFormattedScore implements FormattedScore {
     return teamManager.formattedName(topTwo.first.team())
         + " "
         + ChatColor.WHITE
-        + +topTwo.first.score()
+        + topTwo.first.score()
         + ChatColor.GRAY
         + " - "
         + ChatColor.WHITE

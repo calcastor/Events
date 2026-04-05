@@ -57,7 +57,7 @@ public class VetoDescription implements RoundDescription {
       messages[i] = new TextComponent(fromHistory(i, true, history.get(i)));
     }
 
-    if (history.size() > 0) {
+    if (!history.isEmpty()) {
       // add last line with no new line after
       messages[vetoCount - 1] =
           new TextComponent(fromHistory(vetoCount - 1, false, history.get(vetoCount - 1)));

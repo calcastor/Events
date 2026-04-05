@@ -153,15 +153,7 @@ public class TournamentFormatImpl implements TournamentFormat {
     FormattedScore scores = roundHolder.scores(teamManager).formattedScore(teamManager);
     Bukkit.getScheduler()
         .scheduleSyncDelayedTask(
-            EventsPlugin.get(),
-            new Runnable() {
-
-              @Override
-              public void run() {
-                Bukkit.broadcastMessage(scores.condensed());
-              }
-            },
-            3 * 20);
+            EventsPlugin.get(), () -> Bukkit.broadcastMessage(scores.condensed()), 3 * 20);
   }
 
   public void onEnd(Match match, Optional<TournamentTeam> winner) {

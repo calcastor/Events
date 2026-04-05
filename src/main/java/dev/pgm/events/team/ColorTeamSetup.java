@@ -63,7 +63,7 @@ public class ColorTeamSetup implements TeamSetup {
         continue;
       }
 
-      // no team with that colour, time to do a bit of soul searching and add the team to the cool
+      // no team with that colour, time to do a bit of soul-searching and add the team to the cool
       // list
       unassignedTeams.add(team);
     }

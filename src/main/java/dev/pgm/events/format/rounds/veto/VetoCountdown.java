@@ -48,7 +48,7 @@ public class VetoCountdown extends MatchCountdown {
 
   private void announceRemaining() {
     Optional<TournamentTeam> teamOpt = controller.picking();
-    if (!teamOpt.isPresent()) return;
+    if (teamOpt.isEmpty()) return;
 
     TournamentTeam team = teamOpt.get();
     team.sendMessage(vetoRound.describe().optionsHeader(controller.currentType()));

@@ -44,8 +44,7 @@ class RoundHolder {
       rounds.get(currentRound).cleanup(match);
     }
     currentRound++;
-    TournamentRound round = rounds.get(currentRound);
-    return round;
+    return rounds.get(currentRound);
   }
 
   public TournamentRound currentRound() {
