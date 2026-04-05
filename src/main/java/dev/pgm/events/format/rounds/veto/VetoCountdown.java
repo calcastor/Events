@@ -6,7 +6,6 @@ import dev.pgm.events.team.TournamentTeam;
 import java.time.Duration;
 import java.util.Optional;
 import net.kyori.adventure.text.Component;
-import net.md_5.bungee.api.chat.BaseComponent;
 import tc.oc.pgm.api.match.Match;
 import tc.oc.pgm.countdowns.MatchCountdown;
 
@@ -52,7 +51,7 @@ public class VetoCountdown extends MatchCountdown {
 
     TournamentTeam team = teamOpt.get();
     team.sendMessage(vetoRound.describe().optionsHeader(controller.currentType()));
-    for (BaseComponent[] comp :
+    for (Component comp :
         vetoRound.describe().formatOptions(controller.remainingOptions(), controller.currentType()))
       team.sendMessage(comp);
 

@@ -8,7 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
 import org.jspecify.annotations.Nullable;
 import tc.oc.pgm.api.party.Competitor;
 import tc.oc.pgm.api.party.Party;
@@ -97,13 +98,13 @@ public class DefaultTeamManager implements TournamentTeamManager {
   }
 
   @Override
-  public ChatColor teamColour(TournamentTeam tournamentTeam) {
+  public NamedTextColor teamColour(TournamentTeam tournamentTeam) {
     return getTeamSetup().colour(tournamentTeam);
   }
 
   @Override
-  public String formattedName(TournamentTeam tournamentTeam) {
-    return teamColour(tournamentTeam) + tournamentTeam.getName();
+  public Component formattedName(TournamentTeam tournamentTeam) {
+    return Component.text(tournamentTeam.getName(), teamColour(tournamentTeam));
   }
 
   @Override

@@ -15,18 +15,21 @@ repositories {
     mavenCentral()
     maven("https://oss.sonatype.org/content/repositories/snapshots/") // Snapshots
     maven("https://repo.pgm.fyi/snapshots/") // PGM-specific dependencies
-    maven("https://repo.papermc.io/repository/maven-public/") // Needed for bungeecord-chat
+    maven("https://repo.papermc.io/repository/maven-public/")
 
 }
 
 dependencies {
+    // Annotations
     api("org.jspecify:jspecify:1.0.0")
-
-    compileOnly("net.md-5:bungeecord-chat:1.20-R0.2-deprecated+build.18")
-    compileOnly("dev.pgm.paper:paper-api:1.8_1.21.11-SNAPSHOT")
-    compileOnly("tc.oc.pgm:core:0.16-SNAPSHOT")
-    compileOnly("org.incendo:cloud-annotations:2.0.0")
     compileOnly("org.jetbrains:annotations:26.1.0")
+    compileOnly("org.incendo:cloud-annotations:2.0.0")
+
+    // Provided dependencies
+    compileOnly("dev.pgm.paper:paper-api:1.8_1.21.11-SNAPSHOT")
+    compileOnly("tc.oc.pgm:core:0.16-SNAPSHOT") { isTransitive = false }
+    compileOnly("net.kyori:adventure-api:4.26.1")
+    compileOnly("com.google.guava:guava:17.0")
 }
 
 group = "dev.pgm"
