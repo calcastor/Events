@@ -31,10 +31,9 @@ public class VetoDescription implements RoundDescription {
       case WAITING:
         TextComponent waiting =
             new TextComponent(ChatColor.GREEN + "Deciding veto order with veto decider");
-        waiting.setHoverEvent(
-            new HoverEvent(
-                HoverEvent.Action.SHOW_TEXT,
-                new BaseComponent[] {tournamentFormat.currentRound().describe().roundInfo()}));
+        waiting.setHoverEvent(new HoverEvent(
+            HoverEvent.Action.SHOW_TEXT,
+            new BaseComponent[] {tournamentFormat.currentRound().describe().roundInfo()}));
         return waiting;
       case RUNNING:
         TextComponent running = new TextComponent(ChatColor.GREEN + "Veto process is running now");
@@ -126,13 +125,8 @@ public class VetoDescription implements RoundDescription {
     for (int i = 0; i < options.size(); i++) {
       int vetoNumber = i + 1;
       VetoOption option = options.get(i);
-      ComponentBuilder comp =
-          new ComponentBuilder(
-              ChatColor.GOLD
-                  + Integer.toString(vetoNumber)
-                  + ". "
-                  + ChatColor.AQUA
-                  + option.name());
+      ComponentBuilder comp = new ComponentBuilder(
+          ChatColor.GOLD + Integer.toString(vetoNumber) + ". " + ChatColor.AQUA + option.name());
 
       /*comp.event(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new BaseComponent[]{
               new TextComponent(ChatColor.GRAY + "Click to " + actionWord(type))

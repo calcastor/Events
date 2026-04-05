@@ -54,7 +54,8 @@ public class TournamentAdminCommands {
     for (TournamentPlayer player : team.getPlayers()) {
       Player bukkit = Bukkit.getPlayer(player.getUUID());
       MatchPlayer mp = matchManager.getPlayer(bukkit);
-      if (bukkit != null && Integration.isVanished(bukkit)) Integration.setVanished(mp, false, false);
+      if (bukkit != null && Integration.isVanished(bukkit))
+        Integration.setVanished(mp, false, false);
     }
 
     teamManager.addTeam(team);
@@ -65,13 +66,12 @@ public class TournamentAdminCommands {
   @CommandDescription("List all loaded teams")
   @Permission("events.staff")
   public void list(CommandSender sender, TournamentTeamRegistry registry) {
-    sender.sendMessage(
-        ChatColor.GOLD
-            + "------- "
-            + ChatColor.AQUA
-            + "Registered Teams"
-            + ChatColor.GOLD
-            + " -------");
+    sender.sendMessage(ChatColor.GOLD
+        + "------- "
+        + ChatColor.AQUA
+        + "Registered Teams"
+        + ChatColor.GOLD
+        + " -------");
     for (TournamentTeam team : registry.getTeams())
       sender.sendMessage(ChatColor.AQUA + "- " + team.getName());
     sender.sendMessage(ChatColor.YELLOW + "Run /tourney info <team> to see player roster!");
@@ -87,13 +87,12 @@ public class TournamentAdminCommands {
     TournamentTeam team = registry.getTeam(name);
     if (team == null) throw new CommandException("Team not found!");
 
-    sender.sendMessage(
-        ChatColor.GOLD
-            + "------- "
-            + ChatColor.AQUA
-            + team.getName()
-            + ChatColor.GOLD
-            + " -------");
+    sender.sendMessage(ChatColor.GOLD
+        + "------- "
+        + ChatColor.AQUA
+        + team.getName()
+        + ChatColor.GOLD
+        + " -------");
     for (TournamentPlayer player : team.getPlayers()) {
       String playerName =
           player.getUUID().toString() + ChatColor.GRAY + " (player hasn't logged on)";

@@ -29,13 +29,12 @@ public class ReplayRound extends AbstractRound<ReplaySettings> {
   @Override
   public void start(Match match) {
     setPhase(RoundPhase.RUNNING);
-    List<TournamentRound> rounds =
-        settings().referenceSettings().stream()
-            .map(x -> tournament().references().round(x.targetID()))
-            .filter(Optional::isPresent)
-            .map(Optional::get)
-            .filter(this::tiedRound)
-            .collect(Collectors.toList());
+    List<TournamentRound> rounds = settings().referenceSettings().stream()
+        .map(x -> tournament().references().round(x.targetID()))
+        .filter(Optional::isPresent)
+        .map(Optional::get)
+        .filter(this::tiedRound)
+        .collect(Collectors.toList());
 
     if (rounds.size() == 1) {
       // 1 round has been tied, therefore play it

@@ -29,12 +29,11 @@ public class ConfigTeams implements TournamentTeamFetcher {
         teamsFolder.listFiles((file) -> file.getName().toLowerCase().endsWith(".yml"))) {
       FileConfiguration config = YamlConfiguration.loadConfiguration(child);
       String teamName = config.getString("name");
-      List<TournamentPlayer> players =
-          config.getStringList("players").stream()
-              .map(String::trim)
-              .map(UUID::fromString)
-              .map(x -> TournamentPlayer.create(x, true))
-              .collect(Collectors.toList());
+      List<TournamentPlayer> players = config.getStringList("players").stream()
+          .map(String::trim)
+          .map(UUID::fromString)
+          .map(x -> TournamentPlayer.create(x, true))
+          .collect(Collectors.toList());
 
       teamList.add(TournamentTeam.create(teamName, players));
     }
@@ -43,24 +42,22 @@ public class ConfigTeams implements TournamentTeamFetcher {
       YamlConfiguration teamsConfig = YamlConfiguration.loadConfiguration(teamsFile);
       for (Object object : teamsConfig.getList("teams")) {
         if (!(object instanceof Map<?, ?>)) {
-          System.out.println(
-              "Invalid type in teams.yml ("
-                  + object.getClass().getName()
-                  + ": "
-                  + object.toString()
-                  + ")! Skipping...");
+          System.out.println("Invalid type in teams.yml ("
+              + object.getClass().getName()
+              + ": "
+              + object.toString()
+              + ")! Skipping...");
           continue;
         }
 
         Map<Object, Object> team = (Map<Object, Object>) object;
         String teamName = (String) team.get("name");
-        List<TournamentPlayer> players =
-            ((List<String>) team.get("players"))
-                .stream()
-                    .map(String::trim)
-                    .map(UUID::fromString)
-                    .map(x -> TournamentPlayer.create(x, true))
-                    .collect(Collectors.toList());
+        List<TournamentPlayer> players = ((List<String>) team.get("players"))
+            .stream()
+                .map(String::trim)
+                .map(UUID::fromString)
+                .map(x -> TournamentPlayer.create(x, true))
+                .collect(Collectors.toList());
 
         teamList.add(TournamentTeam.create(teamName, players));
       }

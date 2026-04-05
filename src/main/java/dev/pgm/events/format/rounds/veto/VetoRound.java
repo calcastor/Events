@@ -40,19 +40,18 @@ public class VetoRound extends AbstractRound<VetoSettings> {
   @Override
   public void load() {
     setPhase(RoundPhase.WAITING);
-    vetoDecider =
-        new VetoTournamentImpl(
-            tournament().teamManager(),
-            new TournamentRoundOptions(
-                false,
-                false,
-                false,
-                Duration.ofSeconds(20),
-                Duration.ofSeconds(30),
-                Duration.ofSeconds(40),
-                new BestOfCalculation<>(1)),
-            this,
-            tournament().references());
+    vetoDecider = new VetoTournamentImpl(
+        tournament().teamManager(),
+        new TournamentRoundOptions(
+            false,
+            false,
+            false,
+            Duration.ofSeconds(20),
+            Duration.ofSeconds(30),
+            Duration.ofSeconds(40),
+            new BestOfCalculation<>(1)),
+        this,
+        tournament().references());
 
     TournamentRound decider = settings().decider().newRound(vetoDecider);
     if (decider instanceof VetoSelectorRound)

@@ -16,19 +16,16 @@ public class FormatRoundDescription implements RoundDescription {
 
   @Override
   public BaseComponent roundInfo() {
-    TextComponent component =
-        new TextComponent(
-            formatRound.settings().name() + " - Best of " + formatRound.settings().bestOf());
+    TextComponent component = new TextComponent(
+        formatRound.settings().name() + " - Best of " + formatRound.settings().bestOf());
     if (formatRound.formatTournament() != null)
-      component.setHoverEvent(
-          new HoverEvent(
-              HoverEvent.Action.SHOW_TEXT,
-              new BaseComponent[] {new TextComponent(formatRound.formattedScore().condensed())}));
+      component.setHoverEvent(new HoverEvent(
+          HoverEvent.Action.SHOW_TEXT,
+          new BaseComponent[] {new TextComponent(formatRound.formattedScore().condensed())}));
     else
-      component.setHoverEvent(
-          new HoverEvent(
-              HoverEvent.Action.SHOW_TEXT,
-              new BaseComponent[] {new TextComponent(ChatColor.YELLOW + "Loading...")}));
+      component.setHoverEvent(new HoverEvent(
+          HoverEvent.Action.SHOW_TEXT,
+          new BaseComponent[] {new TextComponent(ChatColor.YELLOW + "Loading...")}));
 
     return component;
   }

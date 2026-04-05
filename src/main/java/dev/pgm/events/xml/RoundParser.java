@@ -29,8 +29,8 @@ public class RoundParser {
       case "result-from" -> ResultFromParser.parse(format, round);
       case "format" -> FormatParser.parse(format, round);
       case "veto-selector" -> new VetoSelectorRound(format, new VetoSelectorSettings());
-      default -> throw new IllegalArgumentException(
-          "Round " + round.getName() + " is not supported!");
+      default ->
+        throw new IllegalArgumentException("Round " + round.getName() + " is not supported!");
     };
   }
 

@@ -46,10 +46,9 @@ public class SingleRoundDescription implements RoundDescription {
       return drawString();
     }
 
-    String teamString =
-        teams.stream()
-            .map(x -> format.teamManager().formattedName(x))
-            .collect(Collectors.joining(ChatColor.GRAY + ", "));
+    String teamString = teams.stream()
+        .map(x -> format.teamManager().formattedName(x))
+        .collect(Collectors.joining(ChatColor.GRAY + ", "));
 
     teamString += " won";
     return teamString;

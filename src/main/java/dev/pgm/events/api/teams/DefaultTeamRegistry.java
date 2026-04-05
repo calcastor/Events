@@ -47,20 +47,14 @@ public class DefaultTeamRegistry implements TournamentTeamRegistry {
 
   @Override
   public void reload() {
-    Bukkit.getScheduler()
-        .runTaskAsynchronously(
-            EventsPlugin.get(),
-            () -> {
-              List<? extends TournamentTeam> teams = tournamentTeamFetcher.getTeams();
-              Bukkit.getScheduler()
-                  .runTask(
-                      EventsPlugin.get(),
-                      () -> {
-                        teams.forEach(x -> teamMap.put(x.getName(), x));
-                        Bukkit.getOnlinePlayers().stream()
-                            .filter(x -> x.hasPermission("events.staff"))
-                            .forEach(x -> x.sendMessage(ChatColor.AQUA + "Teams reloaded!"));
-                      });
-            });
+    Bukkit.getScheduler().runTaskAsynchronously(EventsPlugin.get(), () -> {
+      List<? extends TournamentTeam> teams = tournamentTeamFetcher.getTeams();
+      Bukkit.getScheduler().runTask(EventsPlugin.get(), () -> {
+        teams.forEach(x -> teamMap.put(x.getName(), x));
+        Bukkit.getOnlinePlayers().stream()
+            .filter(x -> x.hasPermission("events.staff"))
+            .forEach(x -> x.sendMessage(ChatColor.AQUA + "Teams reloaded!"));
+      });
+    });
   }
 }

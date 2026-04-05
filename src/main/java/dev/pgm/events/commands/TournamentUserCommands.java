@@ -18,7 +18,8 @@ public class TournamentUserCommands {
   @CommandDescription("Shows the current score in the tournament")
   public void currentScore(CommandSender sender, TournamentFormat format) {
     if (format instanceof FormatTournamentImpl) {
-      String formatName = ((FormatTournamentImpl) format).getFormatRound().settings().name();
+      String formatName =
+          ((FormatTournamentImpl) format).getFormatRound().settings().name();
       sender.sendMessage(ChatColor.YELLOW + "For " + formatName + ":");
       sender.sendMessage(format.currentScore().condensed());
 
@@ -38,7 +39,8 @@ public class TournamentUserCommands {
   public void rounds(CommandSender sender, TournamentFormat format) {
     String header = "Event Rounds";
     if (format instanceof FormatTournamentImpl)
-      header += " (" + ((FormatTournamentImpl) format).getFormatRound().settings().name() + ")";
+      header +=
+          " (" + ((FormatTournamentImpl) format).getFormatRound().settings().name() + ")";
 
     sender.sendMessage(
         ChatColor.GOLD + "------- " + ChatColor.AQUA + header + ChatColor.GOLD + " -------");

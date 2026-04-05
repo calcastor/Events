@@ -25,9 +25,8 @@ public class Components {
 
     return Component.text(command, style)
         .clickEvent(ClickEvent.clickEvent(ClickEvent.Action.RUN_COMMAND, command))
-        .hoverEvent(
-            Component.text("Click to run ", NamedTextColor.GREEN)
-                .append(Component.text(command, style)));
+        .hoverEvent(Component.text("Click to run ", NamedTextColor.GREEN)
+            .append(Component.text(command, style)));
   }
 
   private static String toArgument(String input) {

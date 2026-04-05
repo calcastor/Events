@@ -41,14 +41,20 @@ publishing {
 
 tasks {
     processResources {
+        val description = project.description
+        val version = project.version.toString()
+        val commitHash = project.latestCommitHash()
+
         filesMatching(listOf("plugin.yml")) {
             expand(
-                "name" to project.name,
-                "description" to project.description,
-                "mainClass" to "dev.pgm.events.EventsPlugin",
-                "version" to project.version,
-                "commitHash" to project.latestCommitHash(),
-                "url" to "https://pgm.dev/"
+                mapOf(
+                    "description" to description,
+                    "apiVersion" to "1.21.11",
+                    "mainClass" to "dev.pgm.events.EventsPlugin",
+                    "version" to version,
+                    "commitHash" to commitHash,
+                    "url" to "https://pgm.dev/"
+                )
             )
         }
     }
